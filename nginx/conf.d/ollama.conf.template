@@ -1,0 +1,40 @@
+map $http_authorization $auth_header {
+    "~*^Bearer ${OLLAMA_API_KEY}$" "valid";
+    default "invalid";
+}
+
+server {
+    listen 11436;
+    server_name _;
+
+    # Security headers
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    
+    # API authentication
+    location /api/ {
+        if ($auth_header != "valid") {
+            return 401 '{"error": "Unauthorized: Invalid or missing API key"}';
+        }
+
+        proxy_pass http://178.16.141.18:11434;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        
+        # Timeouts
+        proxy_connect_timeout 300s;
+        proxy_send_timeout 300s;
+        proxy_read_timeout 300s;
+    }
+
+    # Deny access to all other paths
+    location / {
+        return 403;
+    }
+} 

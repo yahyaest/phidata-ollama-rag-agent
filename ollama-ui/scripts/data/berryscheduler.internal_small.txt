@@ -1,0 +1,49 @@
+2025-01-08 15:03:56,025 [INFO] :utils:121 - prepare certificates to be synchronized !
+2025-01-08 15:03:56,033 [INFO] :utils:142 - prepare certificates authorities to be synchronized !
+2025-01-08 15:03:56,044 [INFO] :utils:160 - prepare certificates profiles to be synchronized !
+2025-01-08 15:03:56,053 [INFO] :utils:174 - prepare certificates organizations to be synchronized !
+2025-01-08 15:03:56,063 [INFO] :utils:188 - we have 10 ACs | 0 profiles will be synchronized
+2025-01-08 15:03:56,682 [INFO] :berrynotify:154 - =====> activity_step 105181 updated --> success
+2025-01-08 15:03:57,555 [INFO] :berrynotify:67 - Activity step created successfully
+2025-01-08 15:03:57,564 [INFO] :tasks:3389 - Synchronize certificate authority None
+2025-01-08 15:04:04,759 [ERROR] :bcs:286 - ["Key (tenant, fingerprint)=(<fingerprint>, tenant_nameshield) already exists."]
+2025-01-08 15:04:04,787 [INFO] :tasks:3401 - Try to extract the fingerprint from the response with status :
+2025-01-08 15:04:04,801 [INFO] :utils:402 - start looking for fingirprint in response if it exists !
+2025-01-08 15:04:04,813 [INFO] :utils:407 - Fingerprint found <fingerprint>!
+2025-01-08 15:04:04,832 [INFO] :tasks:3406 - Certificate authority with fingerprint (<fingerprint>) must have None as Ejbca id !
+2025-01-08 15:04:04,862 [INFO] :tasks:3389 - Synchronize certificate authority None
+2025-01-08 15:04:11,709 [ERROR] :bcs:286 - ["Key (tenant, fingerprint)=(<fingerprint>, tenant_nameshield) already exists."]
+2025-01-08 15:04:11,740 [INFO] :tasks:3401 - Try to extract the fingerprint from the response with status :
+2025-01-08 15:04:11,752 [INFO] :utils:402 - start looking for fingirprint in response if it exists !
+2025-01-08 15:04:11,763 [INFO] :utils:407 - Fingerprint found <fingerprint>!
+2025-01-08 15:04:11,781 [INFO] :tasks:3406 - Certificate authority with fingerprint (<fingerprint>) must have None as Ejbca id !
+2025-01-08 15:04:11,810 [INFO] :tasks:3389 - Synchronize certificate authority None
+2025-01-08 15:04:18,691 [ERROR] :bcs:286 - ["Key (tenant, fingerprint)=(<fingerprint>, tenant_nameshield) already exists."]
+2025-01-08 15:04:18,716 [INFO] :tasks:3401 - Try to extract the fingerprint from the response with status :
+2025-01-08 15:04:18,727 [INFO] :utils:402 - start looking for fingirprint in response if it exists !
+2025-01-08 15:04:18,736 [INFO] :utils:407 - Fingerprint found <fingerprint>!
+2025-01-08 15:04:18,751 [INFO] :tasks:3406 - Certificate authority with fingerprint (<fingerprint>) must have None as Ejbca id !
+2025-01-08 15:04:18,775 [INFO] :tasks:3389 - Synchronize certificate authority None
+2025-01-08 15:04:25,713 [ERROR] :bcs:286 - ["Key (tenant, fingerprint)=(<fingerprint>, tenant_nameshield) already exists."]
+2025-01-08 15:04:25,777 [INFO] :tasks:3401 - Try to extract the fingerprint from the response with status :
+2025-01-08 15:04:25,794 [INFO] :utils:402 - start looking for fingirprint in response if it exists !
+2025-01-08 15:04:25,805 [INFO] :utils:407 - Fingerprint found <fingerprint>!
+2025-01-08 15:04:25,826 [INFO] :tasks:3406 - Certificate authority with fingerprint (<fingerprint>) must have None as Ejbca id !
+2025-01-08 15:04:25,857 [INFO] :tasks:3389 - Synchronize certificate authority None
+2025-01-08 15:04:32,666 [ERROR] :bcs:286 - ["Key (tenant, fingerprint)=(<fingerprint>, tenant_nameshield) already exists."]
+2025-01-08 15:04:32,696 [INFO] :tasks:3401 - Try to extract the fingerprint from the response with status :
+2025-01-08 15:04:32,709 [INFO] :utils:402 - start looking for fingirprint in response if it exists !
+2025-01-08 15:04:32,720 [INFO] :utils:407 - Fingerprint found <fingerprint>!
+2025-01-08 15:04:32,738 [INFO] :tasks:3406 - Certificate authority with fingerprint (<fingerprint>) must have None as Ejbca id !
+2025-01-08 15:04:32,768 [INFO] :tasks:3389 - Synchronize certificate authority None
+2025-01-08 15:04:39,522 [ERROR] :bcs:286 - ["Key (tenant, fingerprint)=(<fingerprint>, tenant_nameshield) already exists."]
+2025-01-08 15:04:39,548 [INFO] :tasks:3401 - Try to extract the fingerprint from the response with status :
+2025-01-08 15:04:39,559 [INFO] :utils:402 - start looking for fingirprint in response if it exists !
+2025-01-08 15:49:01,708 [INFO] :tasks:3073 - No error has been raised
+2025-01-08 15:49:01,715 [INFO] :tasks:168 - This task 'None' finished with success, let's record that
+2025-01-08 15:49:01,734 [WARNING] :warnings:109 - /usr/local/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1595: RuntimeWarning: DateTimeField TasksResult.date received a naive datetime (2025-01-08 15:49:01.734313) while time zone support is active. warnings.warn(
+2025-01-08 15:49:01,773 [INFO] :tasks:172 - The task result for task 5640 is recorded with the id
+2025-01-08 15:49:22,518 [ERROR] :berrypkiproxy:47 - response : ["Synch PKI Nameshield Fail ! not enough values to unpack (expected 2, got 0)"]
+2025-01-08 15:49:23,053 [INFO] :berrynotify:154 - =====> activity_step 105210 updated --> success
+2025-01-08 15:49:23,065 [ERROR] :tasks:3365 - Error sync data: Failed to get Pki infos from BerryPkiproxy
+2025-01-08 15:49:23,074 [INFO] :tasks:3870 - PKI Synchronization completed with warning: Faild to synchronize pki : https://ote-api.nameshield.net/ssl/v

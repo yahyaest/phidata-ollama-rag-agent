@@ -1,0 +1,8 @@
+streamlit==1.24.0
+requests==2.31.0
+python-dotenv==1.0.1
+pypdf==4.0.1
+phidata==2.7.8
+chromadb==0.4.22
+ollama==0.4.7
+openai==1.59.8

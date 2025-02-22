@@ -1,0 +1,141 @@
+{
+    "info": {
+        "name": "Ollama API Examples",
+        "description": "Collection of API examples for Ollama running at 178.16.141.18:11434",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "auth": {
+        "type": "bearer",
+        "bearer": {
+            "token": "YOUR_API_KEY_HERE"
+        }
+    },
+    "endpoints": [
+        {
+            "name": "Generate Text",
+            "request": {
+                "method": "POST",
+                "url": "http://178.16.141.18:11434/api/generate",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer ${OLLAMA_API_KEY}"
+                },
+                "body": {
+                    "model": "deepseek-r1:1.5b",
+                    "prompt": "Write a hello world program",
+                    "stream": false,
+                    "options": {
+                        "temperature": 0.7,
+                        "top_p": 0.9,
+                        "top_k": 40,
+                        "num_predict": 128
+                    }
+                }
+            },
+            "response_example": {
+                "model": "deepseek-r1:1.5b",
+                "created_at": "2024-01-01T12:00:00.000Z",
+                "response": "Here's a simple hello world program...",
+                "done": true,
+                "total_duration": 1045000000,
+                "load_duration": 45000000,
+                "prompt_eval_duration": 1000000000
+            }
+        },
+        {
+            "name": "Chat Completion",
+            "request": {
+                "method": "POST",
+                "url": "http://178.16.141.18:11434/api/chat",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer ${OLLAMA_API_KEY}"
+                },
+                "body": {
+                    "model": "llama3.1",
+                    "messages": [
+                        {
+                            "role": "user",
+                            "content": "What is the capital of France?"
+                        }
+                    ],
+                    "stream": false,
+                    "options": {
+                        "temperature": 0.7,
+                        "top_p": 0.9
+                    }
+                }
+            },
+            "response_example": {
+                "model": "llama3.1",
+                "created_at": "2024-01-01T12:00:00.000Z",
+                "message": {
+                    "role": "assistant",
+                    "content": "The capital of France is Paris."
+                },
+                "done": true,
+                "total_duration": 2140000000
+            }
+        },
+        {
+            "name": "List Models",
+            "request": {
+                "method": "GET",
+                "url": "http://178.16.141.18:11434/api/tags",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer ${OLLAMA_API_KEY}"
+                }
+            },
+            "response_example": {
+                "models": [
+                    {
+                        "name": "deepseek-r1:1.5b",
+                        "size": 1536,
+                        "digest": "sha256:..."
+                    },
+                    {
+                        "name": "llama3.1",
+                        "size": 8192,
+                        "digest": "sha256:..."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Stream Generate",
+            "request": {
+                "method": "POST",
+                "url": "http://178.16.141.18:11434/api/generate",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer ${OLLAMA_API_KEY}"
+                },
+                "body": {
+                    "model": "deepseek-r1:1.5b",
+                    "prompt": "Explain quantum computing",
+                    "stream": true,
+                    "options": {
+                        "temperature": 0.7
+                    }
+                }
+            },
+            "response_example": {
+                "note": "Streams multiple responses with this format:",
+                "sample_response": {
+                    "model": "deepseek-r1:1.5b",
+                    "created_at": "2024-01-01T12:00:00.000Z",
+                    "response": "Quantum",
+                    "done": false
+                }
+            }
+        }
+    ],
+    "usage_notes": {
+        "rate_limits": "Be mindful of your server's resources",
+        "streaming": "Set stream: true for real-time responses",
+        "timeouts": "Larger models may take longer to respond",
+        "model_loading": "First request to a model may take longer as it loads into memory",
+        "authentication": "All requests require a valid Bearer token in the Authorization header"
+    }
+} 

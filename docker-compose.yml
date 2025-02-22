@@ -1,0 +1,80 @@
+version: '3.8'
+services:
+  # ollama:
+  #   image: ollama/ollama
+  #   container_name: ollama
+  #   environment:
+  #     - OLLAMA_NUM_PARALLEL=1 # Parallel Request Number
+  #     - OLLAMA_HOST=0.0.0.0
+  #   # Remove direct port exposure
+  #   expose:
+  #     - "11434"
+  #   volumes:
+  #     - /root/.ollama:/root/.ollama
+  #     - ./entrypoint.sh:/entrypoint.sh  # Mount the custom entrypoint script
+  #     - ollama-volume:/root/.ollama
+  #   entrypoint: /entrypoint.sh  # chmod +x entrypoint.sh
+  #   networks:
+  #     - ollama-network
+  #   restart: always
+
+  ollama-nginx:
+    image: nginx:alpine
+    container_name: ollama-nginx
+    environment:
+      - OLLAMA_API_KEY=${OLLAMA_API_KEY}
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d/ollama.conf.template:/etc/nginx/conf.d/ollama.conf.template:ro
+      - ./nginx/docker-entrypoint.sh:/docker-entrypoint.sh:ro
+    ports:
+      - "11436:11436"
+    networks:
+      - ollama-network
+    # depends_on:
+    #   - ollama
+    entrypoint: ["/docker-entrypoint.sh"]
+    command: ["nginx", "-g", "daemon off;"]
+    restart: always
+
+  ollama-ui:
+    build: 
+      context: ./ollama-ui
+      dockerfile: Dockerfile
+    container_name: ollama-ui
+    environment:
+      - OLLAMA_API_KEY=${OLLAMA_API_KEY}
+    ports:
+      - "8505:8501"
+    volumes:
+      - ./ollama-ui/:/app/
+    networks:
+      - ollama-network
+    depends_on:
+      - ollama-nginx
+    restart: always
+
+volumes:
+  ollama-volume:
+  # open-webui-data:
+
+networks:
+  ollama-network:
+    driver: bridge
+    # external: true
+
+# Use ollama-network for other docker networks
+# 0 - Make sure the ollama-network is created before running the other services
+# docker network create ollama-network
+
+# 1 - Add ollama-network to other docker-compose.yml files
+# networks:
+#   ollama-network:
+#     external: true
+
+# 2 - Add ollama-network to the service
+# services:
+#   your-service:
+#     # other config...
+#     networks:
+#       - ollama-network
